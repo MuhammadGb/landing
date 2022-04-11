@@ -18,7 +18,7 @@ const FeaturedTwo = () => {
         sx={{
           display: { xs: "block", md: "flex" },
           flexDirection: "column",
-          padding: "128px",
+          padding: "128px 98px",
         }}
       >
         <Box
@@ -64,14 +64,16 @@ const FeaturedTwo = () => {
               //noWrap
               component="div"
               sx={{
+                width: "95%",
                 mt: "22px",
                 //mr: 2,
                 ml: 2,
                 display: {
                   xs: "none",
                   md: "flex",
-                  ...textOne,
+                  ...subTextOne,
                   ...colorTextTwo,
+                  ...textWeightOne,
                 },
               }}
             >
@@ -216,6 +218,11 @@ const textWeightOne: React.CSSProperties = {
 };
 const textWeightTwo: React.CSSProperties = {
   fontWeight: 800,
+};
+const subTextOne: React.CSSProperties = {
+  fontSize: "18px",
+  lineHeight: "26px",
+  letterSpacing: "-0.02em",
 };
 const buttonTextOne: React.CSSProperties = {
   fontSize: "16px",

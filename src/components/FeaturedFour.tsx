@@ -44,8 +44,9 @@ const FeaturedFour = () => {
                 display: {
                   xs: "none",
                   md: "flex",
-                  ...textOne,
+                  ...textFive,
                   ...colorTextTwo,
+                  ...textWeightOne,
                 },
               }}
             >
@@ -58,6 +59,7 @@ const FeaturedFour = () => {
               sx={{
                 my: 2,
                 mt: 4,
+                textTransform: "none",
                 borderRadius: "47px",
                 "&: hover": {
                   background: "#fa5f34",

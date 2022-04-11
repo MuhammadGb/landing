@@ -29,7 +29,7 @@ const FeaturedThree = () => {
               component="div"
               gutterBottom
               sx={{
-                //mr: 2,
+                mb: 3,
                 ml: 2,
                 textTransform: "uppercase",
                 display: { xs: "none", md: "flex" },
@@ -64,8 +64,9 @@ const FeaturedThree = () => {
                 display: {
                   xs: "none",
                   md: "flex",
-                  ...textOne,
+                  ...subTextOne,
                   ...colorTextTwo,
+                  ...textWeightOne,
                 },
               }}
             >
@@ -86,6 +87,7 @@ const FeaturedThree = () => {
               <Button
                 sx={{
                   my: 2,
+                  textTransform: "none",
                   borderRadius: "7px",
                   "&: hover": {
                     background: "#2621be",
@@ -184,6 +186,11 @@ const textWeightTwo: React.CSSProperties = {
 const buttonTextOne: React.CSSProperties = {
   fontSize: "16px",
   lineHeight: "30px",
+};
+const subTextOne: React.CSSProperties = {
+  fontSize: "18px",
+  lineHeight: "26px",
+  letterSpacing: "-0.02em",
 };
 const buttonTextTwo: React.CSSProperties = {
   fontSize: "17px",

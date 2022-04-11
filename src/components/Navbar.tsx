@@ -12,6 +12,12 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuList from "@mui/material/MenuList";
+import Stack from "@mui/material/Stack";
 
 const normalWidth: string[] = ["Product", "Template", "Blog", "Pricing"];
 const smallWidth: string[] = [
@@ -24,25 +30,62 @@ const smallWidth: string[] = [
 ];
 
 const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] =
-    React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] =
-    React.useState<null | HTMLElement>(null);
+  // const [anchorElNav, setAnchorElNav] =
+  //   React.useState<null | HTMLElement>(null);
+  // const [anchorElUser, setAnchorElUser] =
+  //   React.useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
+  // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
+
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
+
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
+
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handleClose = (event: Event | React.SyntheticEvent) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+
+    setOpen(false);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current!.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
     <Container
@@ -53,16 +96,16 @@ const ResponsiveAppBar = () => {
         display: "flex",
         height: "6rem",
         ...alignCenter,
+        justifyContent: { xs: "space-between", md: "" },
       }}
     >
       <Button
         sx={{
           mr: 2,
-          ml: 6,
+          ml: { xs: 1, md: 6 },
           fontWeight: "700",
           fontSize: "20px",
           lineHeight: "27px",
-          display: { xs: "none", md: "flex" },
           ...textColor,
         }}
       >
@@ -80,7 +123,6 @@ const ResponsiveAppBar = () => {
       <Box
         sx={{
           flexGrow: 1,
-          border: "2px solid red",
           display: { xs: "none", md: "flex" },
           ...justifyCenter,
         }}
@@ -92,10 +134,10 @@ const ResponsiveAppBar = () => {
               ...alignCenter,
               ...justifyCenter,
             }}
+            key={page}
           >
             <Button
-              key={page}
-              onClick={handleCloseNavMenu}
+              //onClick={handleCloseNavMenu}
               sx={{
                 my: 2,
                 color: "black",
@@ -118,7 +160,6 @@ const ResponsiveAppBar = () => {
       <Box
         sx={{
           flexGrow: 1,
-          border: "2px solid red",
           display: { xs: "none", md: "flex" },
           textTransform: "none",
           ...alignCenter,
@@ -132,6 +173,7 @@ const ResponsiveAppBar = () => {
         <Button
           sx={{
             my: 2,
+            textTransform: "none",
             "&: hover": {
               background: "#2621be",
             },
@@ -142,45 +184,58 @@ const ResponsiveAppBar = () => {
         </Button>
       </Box>
 
-      <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleOpenNavMenu}
-          color="inherit"
-        >
-          <MenuIcon />
-        </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorElNav}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          open={Boolean(anchorElNav)}
-          onClose={handleCloseNavMenu}
-          sx={{
-            display: { xs: "block", md: "none" },
-            ...textFont,
-          }}
-        >
-          {smallWidth.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <Typography color="black" textAlign="center">
-                {page}
-              </Typography>
-            </MenuItem>
-          ))}
-        </Menu>
-      </Box>
+      <Stack direction="row" spacing={2}>
+        <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
+          <IconButton
+            size="large"
+            ref={anchorRef}
+            id="composition-button"
+            aria-controls={open ? "composition-menu" : undefined}
+            aria-expanded={open ? "true" : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            placement="bottom-start"
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === "bottom-start" ? "left top" : "left bottom",
+                }}
+              >
+                <Paper elevation={0}>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList
+                      autoFocusItem={open}
+                      id="composition-menu"
+                      aria-labelledby="composition-button"
+                      onKeyDown={handleListKeyDown}
+                    >
+                      {smallWidth.map((page, index) => (
+                        <MenuItem key={index} onClick={handleClose}>
+                          <Typography color="black" textAlign="center">
+                            {page}
+                          </Typography>
+                        </MenuItem>
+                      ))}
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
+        </Box>
+      </Stack>
     </Container>
   );
 };

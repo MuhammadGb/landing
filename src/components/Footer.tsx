@@ -10,8 +10,21 @@ import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputBase from "@mui/material/InputBase";
 import FormHelperText from "@mui/material/FormHelperText";
+import "../assets/fonts/fonts.css";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const FeaturedTwo = () => {
+type Theme = {
+  typography: {
+    fontFamily: (string & {}) | undefined;
+  };
+};
+const Gilroy: Theme = createTheme({
+  typography: {
+    fontFamily: ["Gilroy"].join(","),
+  },
+});
+
+const Footer = () => {
   const company: string[] = ["About Us", "Careers", "Blog", "Pricing"];
   const products: string[] = [
     "Invoicing Platform",
@@ -32,17 +45,20 @@ const FeaturedTwo = () => {
           display: { xs: "block", md: "flex" },
           flexDirection: "column",
           background: "#1B1C31",
-          padding: "128px",
+          padding: "108px 0px 30px 0px",
+          paddingBottom: "30px",
         }}
       >
         <Box
           sx={{
             position: "relative",
-            padding: "0px",
+            height: "90%",
+            mb: 15,
+            padding: "0px 78px",
             display: { xs: "block", md: "flex" },
           }}
         >
-          <Box width="50%" mr="55px">
+          <Box width="44%" mr="55px">
             <Typography
               variant="h2"
               component="div"
@@ -70,8 +86,10 @@ const FeaturedTwo = () => {
                 display: {
                   xs: "none",
                   md: "flex",
-                  ...textOne,
+                  opacity: "0.4",
+                  ...footerSubText,
                   ...colorWhite,
+                  ...textWeightZero,
                 },
               }}
             >
@@ -83,18 +101,18 @@ const FeaturedTwo = () => {
           <Box
             sx={{
               display: "flex",
-              ...justifyCenter,
+              ...justifyBetween,
             }}
-            width="50%"
-            ml="40px"
+            width="55%"
+            ml="35px"
             mr="0px"
           >
             <Box
               sx={{
-                ml: "10px",
+                ml: "0px",
                 display: "flex",
                 flexDirection: "column",
-                ...justifyCenter,
+                ...alignStart,
               }}
             >
               <Typography
@@ -102,7 +120,7 @@ const FeaturedTwo = () => {
                 component="div"
                 gutterBottom
                 sx={{
-                  mb: 1,
+                  mb: 4,
                   ...colorWhite,
                   ...footerText,
                 }}
@@ -115,8 +133,10 @@ const FeaturedTwo = () => {
                   component="div"
                   gutterBottom
                   sx={{
-                    mb: 1,
+                    mb: 2,
                     ...colorWhite,
+                    ...footerTextCol,
+                    ...textWeightZero,
                   }}
                 >
                   {cmpny}
@@ -128,7 +148,7 @@ const FeaturedTwo = () => {
                 ml: "10px",
                 display: "flex",
                 flexDirection: "column",
-                ...justifyCenter,
+                ...alignStart,
               }}
             >
               <Typography
@@ -136,7 +156,7 @@ const FeaturedTwo = () => {
                 component="div"
                 gutterBottom
                 sx={{
-                  mb: 1,
+                  mb: 4,
                   ...colorWhite,
                   ...footerText,
                 }}
@@ -149,9 +169,9 @@ const FeaturedTwo = () => {
                   component="div"
                   gutterBottom
                   sx={{
-                    mb: 1,
-                    textTransform: "uppercase",
+                    mb: 2,
                     ...colorWhite,
+                    ...footerTextCol,
                   }}
                 >
                   {product}
@@ -163,18 +183,14 @@ const FeaturedTwo = () => {
                 ml: "10px",
                 display: "flex",
                 flexDirection: "column",
-                ...justifyCenter,
+                ...alignStart,
               }}
             >
               <Typography
                 variant="h2"
                 component="div"
                 gutterBottom
-                sx={{
-                  mb: 1,
-                  ...colorWhite,
-                  ...footerText,
-                }}
+                sx={{ mb: 4, ...colorWhite, ...footerText }}
               >
                 Resources
               </Typography>
@@ -184,9 +200,9 @@ const FeaturedTwo = () => {
                   component="div"
                   gutterBottom
                   sx={{
-                    mb: 1,
-                    textTransform: "uppercase",
+                    mb: 2,
                     ...colorWhite,
+                    ...footerTextCol,
                   }}
                 >
                   {resource}
@@ -195,34 +211,44 @@ const FeaturedTwo = () => {
             </Box>
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: { xs: "none", md: "flex" },
-            ...justifyBetween,
-          }}
-        >
-          <Typography
-            variant="h6"
-            component="div"
+        <ThemeProvider theme={Gilroy}>
+          <Box
             sx={{
-              ml: 6,
-              ...colorWhite,
+              mt: 3,
+              borderTop: "1px solid #404444",
+              padding: "28px 78px 0px",
+              display: { xs: "none", md: "flex" },
+              ...justifyBetween,
+              height: "10%",
             }}
           >
-            2022 AR Shakir. All rights reserved. -- Privacy Policy - Terms of
-            Services
-          </Typography>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              mr: 6,
-              ...colorWhite,
-            }}
-          >
-            Supported by Microsoft Startup
-          </Typography>
-        </Box>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                ml: 6,
+                ...colorWhite,
+                ...footerTextBottom,
+                ...textWeightThree,
+              }}
+            >
+              2022 AR Shakir. All rights reserved. -- Privacy Policy - Terms of
+              Services
+            </Typography>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                mr: 6,
+                ...colorWhite,
+                ...footerTextBottom,
+                ...textWeightThree,
+              }}
+            >
+              Supported by Microsoft Startup
+            </Typography>
+          </Box>
+        </ThemeProvider>
       </Box>
     </Box>
   );
@@ -265,6 +291,9 @@ const playBorder: React.CSSProperties = {
   boxShadow:
     "0px 100px 80px rgba(34, 212, 151, 0.07), 0px 64.8148px 46.8519px rgba(34, 212, 151, 0.0531481), 0px 38.5185px 25.4815px rgba(34, 212, 151, 0.0425185), 0px 20px 13px rgba(34, 212, 151, 0.035), 0px 8.14815px 6.51852px rgba(34, 212, 151, 0.0274815), 0px 1.85185px 3.14815px rgba(34, 212, 151, 0.0168519)",
 };
+const alignStart: React.CSSProperties = {
+  alignItems: "flex-start",
+};
 const alignCenter: React.CSSProperties = {
   alignItems: "center",
 };
@@ -299,6 +328,12 @@ const textWeightOne: React.CSSProperties = {
 const textWeightTwo: React.CSSProperties = {
   fontWeight: 800,
 };
+const textWeightZero: React.CSSProperties = {
+  fontWeight: 500,
+};
+const textWeightThree: React.CSSProperties = {
+  fontWeight: 700,
+};
 const buttonTextOne: React.CSSProperties = {
   fontSize: "16px",
   lineHeight: "30px",
@@ -307,8 +342,21 @@ const buttonTextTwo: React.CSSProperties = {
   fontSize: "17px",
   lineHeight: "30px",
 };
+const footerSubText: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: "26px",
+};
 const footerText: React.CSSProperties = {
   fontSize: "21px",
+  lineHeight: "24px",
+};
+const footerTextBottom: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: "26px",
+  letterSpacing: "0.02em",
+};
+const footerTextCol: React.CSSProperties = {
+  fontSize: "16px",
   lineHeight: "24px",
 };
 const textSubZero: React.CSSProperties = {
@@ -352,4 +400,4 @@ const textSecondary: React.CSSProperties = {
 const colorBackground: React.CSSProperties = {
   background: "#3734A9",
 };
-export default FeaturedTwo;
+export default Footer;

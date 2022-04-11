@@ -53,12 +53,26 @@ const Footer = () => {
           sx={{
             position: "relative",
             height: "90%",
-            mb: 15,
+            mb: 10,
             padding: "0px 78px",
-            display: { xs: "block", md: "flex" },
+            display: "flex",
+            "@media only screen and (max-device-width: 500px)": {
+              flexDirection: "column",
+              padding: "0px 18px",
+            },
           }}
         >
-          <Box width="44%" mr="55px">
+          <Box
+            width="44%"
+            mr="55px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                width: "98%",
+                mr: "15px",
+                mb: 9,
+              },
+            }}
+          >
             <Typography
               variant="h2"
               component="div"
@@ -67,10 +81,13 @@ const Footer = () => {
                 //mr: 2,
                 ml: 2,
                 textTransform: "uppercase",
-                //display: { xs: "none", md: "flex" },
                 ...textZero,
                 ...colorWhite,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "20px",
+                  lineHeight: "27px",
+                },
               }}
             >
               AR Shakir
@@ -83,13 +100,14 @@ const Footer = () => {
                 mt: "22px",
                 //mr: 2,
                 ml: 2,
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  opacity: "0.4",
-                  ...footerSubText,
-                  ...colorWhite,
-                  ...textWeightZero,
+                display: "flex",
+                opacity: "0.4",
+                ...footerSubText,
+                ...colorWhite,
+                ...textWeightZero,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "16px",
+                  lineHeight: "26px",
                 },
               }}
             >
@@ -99,13 +117,19 @@ const Footer = () => {
             </Typography>
           </Box>
           <Box
-            sx={{
-              display: "flex",
-              ...justifyBetween,
-            }}
             width="55%"
             ml="35px"
             mr="0px"
+            sx={{
+              display: "flex",
+              ...justifyBetween,
+              "@media only screen and (max-device-width: 500px)": {
+                flexDirection: "column",
+                width: "98%",
+                ml: "0px",
+                ...alignCenter,
+              },
+            }}
           >
             <Box
               sx={{
@@ -113,6 +137,10 @@ const Footer = () => {
                 display: "flex",
                 flexDirection: "column",
                 ...alignStart,
+                "@media only screen and (max-device-width: 500px)": {
+                  ...alignCenter,
+                  mb: 6,
+                },
               }}
             >
               <Typography
@@ -132,6 +160,7 @@ const Footer = () => {
                   variant="h5"
                   component="div"
                   gutterBottom
+                  key={cmpny}
                   sx={{
                     mb: 2,
                     ...colorWhite,
@@ -149,6 +178,10 @@ const Footer = () => {
                 display: "flex",
                 flexDirection: "column",
                 ...alignStart,
+                "@media only screen and (max-device-width: 500px)": {
+                  ...alignCenter,
+                  mb: 6,
+                },
               }}
             >
               <Typography
@@ -168,6 +201,7 @@ const Footer = () => {
                   variant="h5"
                   component="div"
                   gutterBottom
+                  key={product}
                   sx={{
                     mb: 2,
                     ...colorWhite,
@@ -184,6 +218,10 @@ const Footer = () => {
                 display: "flex",
                 flexDirection: "column",
                 ...alignStart,
+                "@media only screen and (max-device-width: 500px)": {
+                  ...alignCenter,
+                  mb: 0,
+                },
               }}
             >
               <Typography
@@ -199,6 +237,7 @@ const Footer = () => {
                   variant="h5"
                   component="div"
                   gutterBottom
+                  key={resource}
                   sx={{
                     mb: 2,
                     ...colorWhite,
@@ -212,6 +251,77 @@ const Footer = () => {
           </Box>
         </Box>
         <ThemeProvider theme={Gilroy}>
+          <Box
+            sx={{
+              mt: 0,
+              borderTop: "1px solid #404444",
+              display: { xs: "flex", md: "none" },
+              flexDirection: "column",
+              mb: 2,
+              ...alignCenter,
+            }}
+          >
+            <Typography
+              variant="h2"
+              component="div"
+              gutterBottom
+              sx={{
+                mb: 1,
+                mt: 5,
+                ...colorWhite,
+                ...textWeightThree,
+                fontSize: "12px",
+                lineHeight: "32px",
+              }}
+            >
+              2022 AR Shakir. All rights reserved.
+            </Typography>
+            <Typography
+              variant="h2"
+              component="div"
+              gutterBottom
+              sx={{
+                mb: 1,
+                mt: 1,
+                ...colorWhite,
+                ...textWeightThree,
+                fontSize: "12px",
+                lineHeight: "32px",
+              }}
+            >
+              Privacy Policy
+            </Typography>
+            <Typography
+              variant="h2"
+              component="div"
+              gutterBottom
+              sx={{
+                mb: 1,
+                mt: 1,
+                ...colorWhite,
+                ...textWeightThree,
+                fontSize: "12px",
+                lineHeight: "32px",
+              }}
+            >
+              Terms of Services
+            </Typography>
+            <Typography
+              variant="h2"
+              component="div"
+              gutterBottom
+              sx={{
+                mb: 6,
+                mt: 6,
+                ...colorWhite,
+                ...textWeightThree,
+                fontSize: "12px",
+                lineHeight: "32px",
+              }}
+            >
+              Supported by Microsoft Startup
+            </Typography>
+          </Box>
           <Box
             sx={{
               mt: 3,

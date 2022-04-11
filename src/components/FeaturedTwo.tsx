@@ -13,14 +13,21 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 const FeaturedTwo = () => {
   return (
-    <Box mt="68px">
+    <Box
+      mt="68px"
+      sx={{
+        "@media only screen and (max-device-width: 500px)": {
+          mt: "8px",
+        },
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           padding: "128px 98px",
           "@media only screen and (max-device-width: 500px)": {
-            padding: "18px 9px",
+            padding: "18px 15px",
           },
         }}
       >
@@ -31,7 +38,7 @@ const FeaturedTwo = () => {
             padding: "62px",
             display: "flex",
             "@media only screen and (max-device-width: 500px)": {
-              padding: "22px",
+              padding: "12px",
               flexDirection: "column",
             },
           }}
@@ -76,7 +83,7 @@ const FeaturedTwo = () => {
                 ...textThree,
                 ...textWeightTwo,
                 "@media only screen and (max-device-width: 500px)": {
-                  fontSize: "30px",
+                  fontSize: "27px",
                   lineHeight: "44px",
                 },
               }}
@@ -99,7 +106,7 @@ const FeaturedTwo = () => {
                 "@media only screen and (max-device-width: 500px)": {
                   fontSize: "16px",
                   lineHeight: "26px",
-                  width: "100%",
+                  width: "96%",
                 },
               }}
             >
@@ -115,6 +122,7 @@ const FeaturedTwo = () => {
             sx={{
               "@media only screen and (max-device-width: 500px)": {
                 width: "100%",
+                ml: "0px",
               },
             }}
           >
@@ -131,6 +139,8 @@ const FeaturedTwo = () => {
                 ...textWeightTwo,
                 "@media only screen and (max-device-width: 500px)": {
                   mt: 4,
+                  fontSize: "18px",
+                  lineHeight: "30px",
                 },
               }}
             >
@@ -143,6 +153,10 @@ const FeaturedTwo = () => {
                   height: "3.6rem",
                   borderRadius: "5px",
                   background: "white",
+                  "@media only screen and (max-device-width: 500px)": {
+                    width: "37ch",
+                    height: "3.1rem",
+                  },
                 }}
               >
                 <InputBase
@@ -158,6 +172,10 @@ const FeaturedTwo = () => {
                   height: "3.6rem",
                   borderRadius: "5px",
                   background: "white",
+                  "@media only screen and (max-device-width: 500px)": {
+                    width: "37ch",
+                    height: "3.1rem",
+                  },
                 }}
               >
                 <InputBase
@@ -176,6 +194,10 @@ const FeaturedTwo = () => {
                   background: "#fa5f34",
                 },
                 ...buttonSizeTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  width: "316px",
+                  height: "50px",
+                },
               }}
             >
               Get Started

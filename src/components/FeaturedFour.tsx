@@ -6,20 +6,26 @@ import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import * as React from "react";
-import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputBase from "@mui/material/InputBase";
-import FormHelperText from "@mui/material/FormHelperText";
 
 const FeaturedFour = () => {
   return (
-    <Box mt="68px">
+    <Box
+      mt="68px"
+      sx={{
+        "@media only screen and (max-device-width: 500px)": {
+          mt: "18px",
+        },
+      }}
+    >
       <Box
         sx={{
           display: { xs: "block", md: "flex" },
           flexDirection: "column",
           padding: "68px",
           paddingBottom: "120px",
+          "@media only screen and (max-device-width: 500px)": {
+            padding: "18px",
+          },
         }}
       >
         <Box
@@ -28,11 +34,27 @@ const FeaturedFour = () => {
             padding: "20px",
             borderRadius: "15px",
             border: "1px solid#DEE1E6",
-            display: { xs: "block", md: "flex" },
+            display: "flex",
             ...shadowFour,
+            "@media only screen and (max-device-width: 500px)": {
+              padding: "5px",
+              width: "97%",
+              flexDirection: "column",
+              ...alignCenter,
+              ...justifyCenter,
+            },
           }}
         >
-          <Box width="80%" mr="55px">
+          <Box
+            width="80%"
+            mr="55px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                mr: "5px",
+                width: "100%",
+              },
+            }}
+          >
             <Typography
               variant="h6"
               //noWrap
@@ -41,12 +63,14 @@ const FeaturedFour = () => {
                 mt: "22px",
                 //mr: 2,
                 ml: 2,
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  ...textFive,
-                  ...colorTextTwo,
-                  ...textWeightOne,
+                display: "flex",
+                ...textFive,
+                ...colorTextTwo,
+                ...textWeightOne,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "14px",
+                  lineHeight: "23px",
+                  width: "94%",
                 },
               }}
             >
@@ -54,7 +78,16 @@ const FeaturedFour = () => {
               been no hold mr. Is at much do made took held help.
             </Typography>
           </Box>
-          <Box width="20%" ml="0px" mr="0px">
+          <Box
+            width="20%"
+            ml="0px"
+            mr="0px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                width: "100%",
+              },
+            }}
+          >
             <Button
               sx={{
                 my: 2,
@@ -65,6 +98,11 @@ const FeaturedFour = () => {
                   background: "#fa5f34",
                 },
                 ...buttonSizeTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  width: "97%",
+                  height: "46px",
+                  ml: 1,
+                },
               }}
             >
               Get Started

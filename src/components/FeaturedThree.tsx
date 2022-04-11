@@ -11,19 +11,43 @@ const FeaturedThree = () => {
     <Box mt="48px">
       <Box
         sx={{
-          display: { xs: "block", md: "flex" },
+          display: "flex",
           flexDirection: "column",
         }}
       >
         <Box position="relative">
-          <img style={lineStyles} src={lines4} alt="lines" />
+          <Box
+            component="img"
+            sx={{
+              ...lineStyles,
+              "@media only screen and (max-device-width: 500px)": {
+                display: "none",
+              },
+            }}
+            src={lines4}
+            alt="lineStyles"
+          />
         </Box>
         <Box
           sx={{
-            display: { xs: "block", md: "flex" },
+            display: "flex",
+            "@media only screen and (max-device-width: 500px)": {
+              flexDirection: "column",
+            },
           }}
         >
-          <Box width="42%" ml="100px" mr="115px">
+          <Box
+            width="42%"
+            ml="100px"
+            mr="115px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                width: "96%",
+                ml: "10px",
+                mr: "0px",
+              },
+            }}
+          >
             <Typography
               variant="h2"
               component="div"
@@ -32,10 +56,14 @@ const FeaturedThree = () => {
                 mb: 3,
                 ml: 2,
                 textTransform: "uppercase",
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textZero,
                 ...colorText,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "16px",
+                  lineHeight: "21px",
+                },
               }}
             >
               Our Feature
@@ -46,9 +74,14 @@ const FeaturedThree = () => {
               sx={{
                 //mr: 2,
                 ml: 2,
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textThree,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "26px",
+                  lineHeight: "42px",
+                  width: "90%",
+                },
               }}
             >
               All payments are linked to your Financy account
@@ -61,12 +94,14 @@ const FeaturedThree = () => {
                 mt: "22px",
                 //mr: 2,
                 ml: 2,
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  ...subTextOne,
-                  ...colorTextTwo,
-                  ...textWeightOne,
+                display: "flex",
+                ...subTextOne,
+                ...colorTextTwo,
+                ...textWeightOne,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "16px",
+                  lineHeight: "26px",
+                  width: "90%",
                 },
               }}
             >
@@ -77,7 +112,7 @@ const FeaturedThree = () => {
             <Box
               sx={{
                 //flexGrow: 1,
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-start",
                 ml: 2,
@@ -93,6 +128,10 @@ const FeaturedThree = () => {
                     background: "#2621be",
                   },
                   ...buttonSize,
+                  "@media only screen and (max-device-width: 500px)": {
+                    width: "126px",
+                    height: "48px",
+                  },
                 }}
               >
                 Get Started
@@ -104,10 +143,27 @@ const FeaturedThree = () => {
             sx={{
               width: "50%",
               left: "0rem",
-              display: { xs: "none", md: "block" },
+              display: "block",
+              "@media only screen and (max-device-width: 500px)": {
+                width: "96%",
+              },
             }}
           >
-            <img style={{ ...styleOne }} src={profiles} alt="profiles" />
+            <Box
+              component="img"
+              sx={{
+                ...styleOne,
+                "@media only screen and (max-device-width: 500px)": {
+                  width: "100%",
+                  height: "100%",
+                  position: "relative",
+                  left: 0,
+                  top: "2rem",
+                },
+              }}
+              src={profiles}
+              alt="profiles"
+            />
           </Box>
         </Box>
       </Box>

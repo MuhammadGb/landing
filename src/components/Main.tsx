@@ -38,7 +38,7 @@ const Main = () => {
         >
           <Box
             sx={{
-              width: { xs: "100%", md: "41%" },
+              width: { xs: "98%", md: "41%" },
               ml: { xs: "10px", md: "100px" },
             }}
           >
@@ -54,7 +54,7 @@ const Main = () => {
                   fontSize: "36px",
                   lineHeight: "53px",
                   letterSpacing: "-0.03em",
-                  width: "85%",
+                  width: "89%",
                 },
               }}
             >
@@ -75,7 +75,7 @@ const Main = () => {
                   fontSize: "15px",
                   lineHeight: "30px",
                   letterSpacing: "-0.02em",
-                  width: "85%",
+                  width: "89%",
                   mr: 0,
                 },
               }}
@@ -92,7 +92,7 @@ const Main = () => {
                 ml: 2,
                 mt: "26px",
                 "@media only screen and (max-device-width: 500px)": {
-                  mr: 2,
+                  mr: 0,
                 },
               }}
             >

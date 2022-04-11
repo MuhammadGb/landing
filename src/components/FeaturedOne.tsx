@@ -23,7 +23,17 @@ const FeaturedOne = () => {
         }}
       >
         <Box position="relative">
-          <img style={lineStyles} src={line3} alt="lines" />
+          <Box
+            component="img"
+            sx={{
+              ...lineStyles,
+              "@media only screen and (max-device-width: 500px)": {
+                top: "-35rem",
+              },
+            }}
+            src={line3}
+            alt="lineStyles"
+          />
         </Box>
         <Box
           sx={{
@@ -40,9 +50,8 @@ const FeaturedOne = () => {
               left: "6rem",
               display: "block",
               "@media only screen and (max-device-width: 500px)": {
-                width: "529px",
-                height: "289px",
-                left: "2rem",
+                width: "99%",
+                left: "0rem",
               },
             }}
           >
@@ -52,6 +61,9 @@ const FeaturedOne = () => {
                 ...styleOne,
                 "@media only screen and (max-device-width: 500px)": {
                   width: "100%",
+                  height: "auto",
+                  position: "relative",
+                  left: 0,
                 },
               }}
               src={charts}
@@ -64,7 +76,7 @@ const FeaturedOne = () => {
             mr="85px"
             sx={{
               "@media only screen and (max-device-width: 500px)": {
-                width: "100%",
+                width: "98%",
                 ml: "6px",
                 mb: "45px",
                 mr: "15px",
@@ -103,7 +115,7 @@ const FeaturedOne = () => {
                 "@media only screen and (max-device-width: 500px)": {
                   fontSize: "30px",
                   lineHeight: "44px",
-                  width: "95%",
+                  width: "89%",
                 },
               }}
             >
@@ -123,7 +135,7 @@ const FeaturedOne = () => {
                 "@media only screen and (max-device-width: 500px)": {
                   fontSize: "15px",
                   lineHeight: "26px",
-                  width: "95%",
+                  width: "90%",
                 },
               }}
             >

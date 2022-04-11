@@ -19,7 +19,18 @@ const Main = () => {
           flexDirection: "column",
         }}
       >
-        <img style={lineStyles} src={line1} alt="lines" />
+        <Box
+          component="img"
+          sx={{
+            ...lineStyles,
+            "@media only screen and (max-device-width: 500px)": {
+              top: "0rem",
+              position: "absolute",
+            },
+          }}
+          src={line1}
+          alt="line1"
+        />
         <Box
           sx={{
             display: { xs: "block", md: "flex" },

@@ -22,14 +22,23 @@ const Banner = () => {
           textAlign: "center",
           mb: 4,
           ...textTwo,
+          "@media only screen and (max-device-width: 500px)": {
+            fontSize: "18px",
+            lineHeight: "26px",
+            ml: 4,
+            mr: 4,
+          },
         }}
       >
         Over 32k+ software businesses growing with AR Shakir
       </Typography>
       <Box
         sx={{
-          display: { xs: "none", md: "flex" },
+          display: "flex",
           ...justifyCenter,
+          "@media only screen and (max-device-width: 500px)": {
+            flexWrap: "wrap",
+          },
         }}
       >
         {sponsors.map((sponsor: string, index: number) => (
@@ -40,6 +49,9 @@ const Banner = () => {
               ...justifyCenter,
               mr: 3,
               ml: 3,
+              "@media only screen and (max-device-width: 500px)": {
+                margin: 3,
+              },
             }}
             key={index}
           >

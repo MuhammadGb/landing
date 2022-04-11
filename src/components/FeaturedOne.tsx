@@ -8,7 +8,14 @@ import Button from "@mui/material/Button";
 
 const FeaturedOne = () => {
   return (
-    <Box mt="138px">
+    <Box
+      mt="138px"
+      sx={{
+        "@media only screen and (max-device-width: 500px)": {
+          mt: "18px",
+        },
+      }}
+    >
       <Box
         sx={{
           display: { xs: "block", md: "flex" },
@@ -20,7 +27,10 @@ const FeaturedOne = () => {
         </Box>
         <Box
           sx={{
-            display: { xs: "block", md: "flex" },
+            display: "flex",
+            "@media only screen and (max-device-width: 500px)": {
+              flexDirection: "column-reverse",
+            },
           }}
         >
           <Box
@@ -28,12 +38,39 @@ const FeaturedOne = () => {
             sx={{
               width: "50%",
               left: "6rem",
-              display: { xs: "none", md: "block" },
+              display: "block",
+              "@media only screen and (max-device-width: 500px)": {
+                width: "529px",
+                height: "289px",
+                left: "2rem",
+              },
             }}
           >
-            <img style={{ ...styleOne }} src={charts} alt="charts" />
+            <Box
+              component="img"
+              sx={{
+                ...styleOne,
+                "@media only screen and (max-device-width: 500px)": {
+                  width: "100%",
+                },
+              }}
+              src={charts}
+              alt="charts"
+            />
           </Box>
-          <Box width="44%" ml="125px" mr="85px">
+          <Box
+            width="44%"
+            ml="125px"
+            mr="85px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                width: "100%",
+                ml: "6px",
+                mb: "45px",
+                mr: "15px",
+              },
+            }}
+          >
             <Typography
               variant="h2"
               component="div"
@@ -42,10 +79,14 @@ const FeaturedOne = () => {
                 //mr: 2,
                 ml: 2,
                 textTransform: "uppercase",
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textZero,
                 ...colorText,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  ml: 1,
+                  mb: 3,
+                },
               }}
             >
               Our Feature
@@ -56,9 +97,14 @@ const FeaturedOne = () => {
               sx={{
                 //mr: 2,
                 ml: 2,
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textThree,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "30px",
+                  lineHeight: "44px",
+                  width: "95%",
+                },
               }}
             >
               Receive payments quickly from anywhere
@@ -71,11 +117,13 @@ const FeaturedOne = () => {
                 mt: "22px",
                 //mr: 2,
                 ml: 2,
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  ...textOne,
-                  ...colorTextTwo,
+                display: "flex",
+                ...textOne,
+                ...colorTextTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "15px",
+                  lineHeight: "26px",
+                  width: "95%",
                 },
               }}
             >
@@ -86,7 +134,7 @@ const FeaturedOne = () => {
             <Box
               sx={{
                 //flexGrow: 1,
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-start",
                 ml: 2,
@@ -101,6 +149,10 @@ const FeaturedOne = () => {
                     background: "#2621be",
                   },
                   ...buttonSize,
+                  "@media only screen and (max-device-width: 500px)": {
+                    width: "129px",
+                    height: "48px",
+                  },
                 }}
               >
                 Get Started

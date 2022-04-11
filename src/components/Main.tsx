@@ -24,8 +24,7 @@ const Main = () => {
           sx={{
             ...lineStyles,
             "@media only screen and (max-device-width: 500px)": {
-              top: "0rem",
-              position: "absolute",
+              display: "none",
             },
           }}
           src={line1}
@@ -193,7 +192,17 @@ const Main = () => {
             />
           </Box>
         </Box>
-        <img style={lineStylesTwo} src={line2} alt="lines" />
+        <Box
+          component="img"
+          sx={{
+            ...lineStylesTwo,
+            "@media only screen and (max-device-width: 500px)": {
+              top: "6rem",
+            },
+          }}
+          src={line2}
+          alt="line2"
+        />
       </Box>
     </Box>
   );

@@ -16,9 +16,12 @@ const FeaturedTwo = () => {
     <Box mt="68px">
       <Box
         sx={{
-          display: { xs: "block", md: "flex" },
+          display: "flex",
           flexDirection: "column",
           padding: "128px 98px",
+          "@media only screen and (max-device-width: 500px)": {
+            padding: "18px 9px",
+          },
         }}
       >
         <Box
@@ -26,22 +29,39 @@ const FeaturedTwo = () => {
             position: "relative",
             background: "#F3F7FA",
             padding: "62px",
-            display: { xs: "block", md: "flex" },
+            display: "flex",
+            "@media only screen and (max-device-width: 500px)": {
+              padding: "22px",
+              flexDirection: "column",
+            },
           }}
         >
-          <Box width="60%" mr="55px">
+          <Box
+            width="60%"
+            mr="55px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                width: "100%",
+              },
+            }}
+          >
             <Typography
               variant="h2"
               component="div"
               gutterBottom
               sx={{
-                //mr: 2,
                 ml: 2,
                 textTransform: "uppercase",
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textZero,
                 ...colorText,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "16px",
+                  lineHeight: "19px",
+                  mb: 2,
+                  mt: 5,
+                },
               }}
             >
               Our Feature
@@ -52,9 +72,13 @@ const FeaturedTwo = () => {
               sx={{
                 //mr: 2,
                 ml: 2,
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textThree,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "30px",
+                  lineHeight: "44px",
+                },
               }}
             >
               Receive payments quickly from anywhere
@@ -68,12 +92,14 @@ const FeaturedTwo = () => {
                 mt: "22px",
                 //mr: 2,
                 ml: 2,
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  ...subTextOne,
-                  ...colorTextTwo,
-                  ...textWeightOne,
+                display: "flex",
+                ...subTextOne,
+                ...colorTextTwo,
+                ...textWeightOne,
+                "@media only screen and (max-device-width: 500px)": {
+                  fontSize: "16px",
+                  lineHeight: "26px",
+                  width: "100%",
                 },
               }}
             >
@@ -82,7 +108,16 @@ const FeaturedTwo = () => {
               tended active enable to.
             </Typography>
           </Box>
-          <Box width="40%" ml="0px" mr="0px">
+          <Box
+            width="40%"
+            ml="0px"
+            mr="0px"
+            sx={{
+              "@media only screen and (max-device-width: 500px)": {
+                width: "100%",
+              },
+            }}
+          >
             <Typography
               variant="h2"
               component="div"
@@ -90,11 +125,13 @@ const FeaturedTwo = () => {
               sx={{
                 mb: 2,
                 //ml: 2,
-                textTransform: "uppercase",
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 ...textFour,
                 ...colorText,
                 ...textWeightTwo,
+                "@media only screen and (max-device-width: 500px)": {
+                  mt: 4,
+                },
               }}
             >
               Get Started for Free
